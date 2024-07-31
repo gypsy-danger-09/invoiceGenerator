@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/invoice-generator
+    depends_on:
+      - mongo
+        
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
